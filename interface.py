@@ -24,18 +24,17 @@ root.geometry("900x800")
 background_img = ImageTk.PhotoImage(Image.open('NS.png'))
 label=Label(master=root, image=background_img, width = 900, height = 300)
 label.place(y=260)
-#canvas1.create_image(0,0,image = background_img, anchor = 'nw')
 
-cur.execute("SELECT inhoud FROM bericht LIMIT 5")
+cur.execute("SELECT inhoud, naam_r FROM bericht, reiziger LIMIT 5")
 rows = cur.fetchall()
 text = Text(master=root, width=55, height=8)
 for row in rows:
     text.insert(END, ', '.join(map(str,row))+ '\n')
     text.place(x=30, y=40)
 
-img1 = ImageTk.PhotoImage(Image.open('img_lift.png'))
+'''img1 = ImageTk.PhotoImage(Image.open('img_lift.png'))
 label = Label(image=img1)
-label.place(x=75, y=610)
+label.place(x=75, y=610)'''
 
 img2= ImageTk.PhotoImage(Image.open('img_ovfiets.png'))
 label = Label(image=img2)
@@ -45,15 +44,15 @@ img3= ImageTk.PhotoImage(Image.open('img_toilet.png'))
 label = Label(image=img3)
 label.place(x=490, y=610)
 
-img4= ImageTk.PhotoImage(Image.open('img_pr.png'))
+'''img4= ImageTk.PhotoImage(Image.open('img_pr.png'))
 label = Label(image=img4)
-label.place(x=690, y=610)
+label.place(x=690, y=610)'''
 
 resource_uri= "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}"
 city = "Haarlem,NL"
 api_key = "8c105df757bbe23dd8a55374465888d4"
 
-root.title(f"Station {city[:-3]} Feedback") #basligi tekrar dusun
+root.title(f"Station {city[:-3]} Feedback")
 def weersvoorspelling(api_key, city):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
     response = requests.get(url)
@@ -94,12 +93,6 @@ resized_image= wolk.resize((90,90))
 new_image= ImageTk.PhotoImage(resized_image)
 new_image_label = Label(image=new_image)
 new_image_label.place(x= 550, y=20)
-#label = Label(image=wolk)
-#label.place(x= 600, y=30)
-#canvas1.create_rectangle(50,50,150,150, fill="white")
-
-
-
 
 root.mainloop()
 
