@@ -25,7 +25,7 @@ background_img = ImageTk.PhotoImage(Image.open('NS.png'))
 label=Label(master=root, image=background_img, width = 900, height = 300)
 label.place(y=260)
 
-cur.execute("SELECT inhoud, naam_r FROM bericht, reiziger LIMIT 5")
+cur.execute("SELECT DISTINCT inhoud, reiziger.naam_r FROM bericht, reiziger LIMIT 5")
 rows = cur.fetchall()
 text = Text(master=root, width=55, height=8)
 for row in rows:

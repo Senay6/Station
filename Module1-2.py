@@ -25,7 +25,7 @@ while True:
 
             if naam == "":
                 naam = 'ANONIEM'
-            stations = ['Haarlem', 'Arnhem', 'Almere', 'Amersfoort', 'Helmond', 'Venlo', 'Oss', 'Amsterdam', 'Zaandam']
+            stations = ['Haarlem', 'Amsterdam', 'Zaandam']
             station_keuze = random.choice(stations)
 
             tijd = str(datetime.now())
